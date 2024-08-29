@@ -1,0 +1,69 @@
+
+
+.inner-menu {
+
+    /* give-it */
+   /* width: 100px;  */
+   width: 30px; 
+
+    /* give-it */
+   /* height: 100px;  */
+   height: 30px; 
+
+   /* give-it */
+   background-color: transparent;  
+
+   /* position: relative; */
+   position: fixed;
+   z-index: 2;
+   top: 3.5vmax;
+   left: 4.5vmax;
+  z-index: 1001;
+
+}
+
+.inner-menu span {
+
+   /* give-it */
+   /* background-color: #ffffff;   */
+   background-color: #550606;  
+   
+   width: 100%;
+   height: 10%;
+   border-radius: 20px;
+   display: block;
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transition: 1s;
+}
+
+.slice-1 {
+   /* transform: translate( -50% , -50px ); */
+   transform: translate(-50%, -400%);
+}
+
+.slice-2 {
+   transform: translate(-50%, 0);
+}
+
+.slice-3 {
+   transform: translate(-50%, 400%);
+}
+
+
+
+.openmenu .slice-1 {
+   transform: translate(-50%, 0px) rotate(45deg);
+}
+
+.openmenu .slice-2 {
+   /* transform: translate(-50% , 0); */
+   /* width: 0; */
+   transform: translate(-100%, 0);
+   opacity: 0;
+}
+
+.openmenu .slice-3 {
+   transform: translate(-50%, 0px) rotate(-45deg);
+}

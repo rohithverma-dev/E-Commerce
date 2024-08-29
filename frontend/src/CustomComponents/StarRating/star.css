@@ -1,0 +1,33 @@
+.all_stars{
+  display: block;
+}
+
+.star{
+  display: inline-block;
+  border-left: var(--size) solid transparent;
+  border-right: var(--size) solid transparent;
+  border-bottom: calc( var(--size)*2) solid #a2a2a276;
+  position: relative;
+  margin: 5px;
+  cursor: pointer;
+}
+
+.star::after{
+  content: "";
+  display: inline-block;
+  border-left: var(--size) solid transparent;
+  border-right: var(--size) solid transparent;
+  border-bottom: calc( var(--size)*2) solid #a2a2a276;
+  transform: rotate(180deg) translate(50% , -25% ) ;
+  position: absolute;
+}
+
+/* .star:hover , .star:hover::after  {
+  border-bottom-color:  rgb(255, 251, 33);
+  border-bottom-color:  tomato;
+}  */
+
+.color-star , .color-star::after  {
+  /* border-bottom-color:  rgb(255, 251, 33); */
+  border-bottom-color:  tomato;
+}
