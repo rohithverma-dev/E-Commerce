@@ -1,6 +1,5 @@
 import React from "react";
 import "./aboutSection.css";
-import {  Typography } from "@material-ui/core";
 import { BsGithub } from "react-icons/bs";
 import { BsLinkedin } from "react-icons/bs";
 
