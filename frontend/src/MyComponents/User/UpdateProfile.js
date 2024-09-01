@@ -10,7 +10,7 @@ import Loading from "../layout/Loader/Loader.js"
 
 const UpdateProfile = () => {
   const context = useContext(noteContext);
-	const { user, isUpdated , setIsUpdated , updateUserProfile  , loading } = context
+	const { user, isUpdated , setIsUpdated , updateUserProfile  , loading } = context;
 
 	let history = useNavigate()
 

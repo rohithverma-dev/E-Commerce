@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import "./backdrop.css"
 
 
-const BackDrop = ({ AvatarUrl , options}) => {
+const BackDrop = ({ AvatarUrl, options }) => {
 
     const [showOptions, setShowOptions] = useState(false)
     const [tooltipContent, setTooltipContent] = useState("")
@@ -13,9 +13,17 @@ const BackDrop = ({ AvatarUrl , options}) => {
         links.forEach(link => link.setAttribute('data-tooltip', tooltipContent));
     }, [tooltipContent])
 
-    return (
-        <div className='users_options' >
-            <div style={{ opacity: showOptions ? '1' : '0', transition: '0.5s', transitionDelay: showOptions ? '0s' : '0s' }} className="overlay_routes"></div>
+    return ( 
+        <>
+
+            <div 
+                style={{ 
+                    opacity: showOptions ? 1 : 0,
+                    transform: `scale(${showOptions ? 1 : 0} )`, 
+                    transition: `opacity 0.5s ${showOptions ? '0s' : '0s'} , transform 0s ${showOptions ? '0s' : '0.5s'} ` }} className="overlay_routes"
+            >
+            </div>
+
             <div className="route_options">
                 <img
                     onClick={() => setShowOptions(!showOptions)}
@@ -25,7 +33,7 @@ const BackDrop = ({ AvatarUrl , options}) => {
                     src={AvatarUrl} alt=""
                 />
 
-                <div style={{ transform: `scale(${showOptions ? 1 : 0}) `, transitionDelay: `${showOptions ? '0s' : '1s'}`  }} >
+                <div style={{ transform: `scale(${showOptions ? 1 : 0}) `, transitionDelay: `${showOptions ? '0s' : '1s'}` }} >
 
                     {options.map((item, index) => {
                         return <div
@@ -42,7 +50,8 @@ const BackDrop = ({ AvatarUrl , options}) => {
 
 
             </div>
-        </div>
+
+        </>
     )
 }
 

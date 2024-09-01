@@ -1,26 +1,22 @@
-.users_options{
+.overlay_routes{
+    background-color: rgba(0, 0, 0, 0.703);
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    z-index: 1;
-}
-.overlay_routes{
-    /* background-color: rgba(48, 48, 48, 0.469); */
-    background-color: rgba(0, 0, 0, 0.453);
-    width: 100%;
-    height: 100%;
+    z-index: 2;
 }
 
 .route_options{
-    position: absolute;
+    position: fixed;
     right: 50px;
     top: 45px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+    z-index: 5;
     /* height: 300px; */
     /* background-color: white; */
 }
