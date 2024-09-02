@@ -8,11 +8,9 @@
     display: flex;
   }
 
-  /* .left-div{
-    
-  }  */
- 
-
+  .left-div{
+    padding: 50px !important;
+  }
  
   
   .ProductDetails > div {
@@ -218,6 +216,10 @@
     .ProductDetails {
       flex-direction: column;
       height: unset;
+    }
+
+    .left-div{
+      padding: 25px !important;
     }
   
     .ProductDetails > div:last-child {

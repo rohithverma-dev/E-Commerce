@@ -10,7 +10,7 @@ const Stars = ({ onChange = false, options }) => {
         setEle_hover_index(stars)
     };
 
-    console.log(onChange );
+    // console.log(onChange );
     const handleClick = (stars) => {
         setEle_index(stars)
         if (onChange) {

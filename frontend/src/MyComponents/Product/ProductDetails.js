@@ -1,5 +1,4 @@
 import React, { Fragment, useContext, useEffect, useState } from "react";
-import Carousel from "react-material-ui-carousel";
 import { useParams } from "react-router-dom";
 import noteContext from "../../context/notes/noteContext.js"
 import ReviewCard from "./ReviewCard.js";
@@ -10,12 +9,12 @@ import {
   DialogTitle,
   Button,
 } from "@material-ui/core";
-// import { Rating } from "@material-ui/lab";
 import Loading from "../layout/Loader/Loader.js"
 import "./ProductDetails.css";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Stars from "../../CustomComponents/StarRating/Stars.js";
+import ImageCoursel from "../../CustomComponents/ImageCarousel/ImageCarousel.js";
 
 function ProductDetails() {
   const { id } = useParams();
@@ -39,7 +38,7 @@ function ProductDetails() {
     edit: true,
     totalStars: 5,
     size: window.innerWidth < 600 ? 5.5 : 7,
-    value: product.ratings  || 0,
+    value: product.ratings || 0,
   }
 
   const addToCartHandler = () => {
@@ -101,12 +100,16 @@ function ProductDetails() {
     <>
       <div className="ProductDetails">
         <div className="left-div">
-          <Carousel className="hii_carousel">
-            {product.images &&
-              product.images.map((item, i) => (
-                <img className="CarouselImage" key={i} src={item.url} alt={`${i} Slide`} />
-              ))}
-          </Carousel>
+
+
+         
+          { product && product.images  &&  <ImageCoursel allImages={product.images} interval_Time={10000} />}
+        
+
+
+
+
+
         </div>
         <div className="right-div">
           <div className="detailsBlock-1">
