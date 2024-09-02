@@ -103,7 +103,7 @@ function ProductDetails() {
 
 
          
-          { product && product.images  &&  <ImageCoursel allImages={product.images} interval_Time={10000} />}
+          { product && product.images  &&  <ImageCoursel allImages={product.images} interval_Time={2500} />}
         
 
 
