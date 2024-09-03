@@ -497,7 +497,6 @@ const newReview = async ( newReviewForm ) => {
     if (data.message) {
       setMessage(data.message)
       setIsUpdated(data.success)
-      console.log("for stars" , data );
       setIsUpdated(true)
       setLoading(false)
     }
