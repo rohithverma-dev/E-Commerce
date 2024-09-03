@@ -2,19 +2,14 @@ import React, { Fragment, useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import noteContext from "../../context/notes/noteContext.js"
 import ReviewCard from "./ReviewCard.js";
-import {
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogTitle,
-  Button,
-} from "@material-ui/core";
 import Loading from "../layout/Loader/Loader.js"
 import "./ProductDetails.css";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Stars from "../../CustomComponents/StarRating/Stars.js";
 import ImageCoursel from "../../CustomComponents/ImageCarousel/ImageCarousel.js";
+import Modal from "../../CustomComponents/Modal/Modal.js";
+import Loader from "../layout/Loader/Loader.js";
 
 function ProductDetails() {
   const { id } = useParams();
@@ -22,8 +17,8 @@ function ProductDetails() {
   const context = useContext(noteContext);
   const { addItemsToCart, getProductDetails, isAuthenticated, product, cartItems, setCartItems, isUpdated, setIsUpdated, newReview, loading } = context;
 
+  const [modal, setModal] = useState(false)
   const [quantity, setQuantity] = useState(1);
-  const [open, setOpen] = useState(false);
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState("");
 
@@ -41,6 +36,7 @@ function ProductDetails() {
     value: product.ratings || 0,
   }
 
+
   const addToCartHandler = () => {
     addItemsToCart(id, quantity);
   };
@@ -57,9 +53,10 @@ function ProductDetails() {
     setQuantity(qty);
   };
 
+
   const submitReviewToggle = () => {
     if (isAuthenticated) {
-      open ? setOpen(false) : setOpen(true);
+      modal ? setModal(false) : setModal(true);
     }
     else {
       toast.info("Please Login To Submit Review", {
@@ -74,14 +71,18 @@ function ProductDetails() {
       });
     }
   };
+
+
   const reviewSubmitHandler = () => {
     const myForm = new FormData();
     myForm.set("rating", rating);
     myForm.set("comment", comment);
     myForm.set("productId", id);
     newReview(myForm);
-    setOpen(false);
   };
+
+
+
 
   useEffect(() => {
     setCartItems(localStorage.getItem("cartItems") ? JSON.parse(localStorage.getItem("cartItems")) : [])
@@ -96,19 +97,15 @@ function ProductDetails() {
 
 
 
+
+
   return (
+    loading? <Loader/> : 
     <>
       <div className="ProductDetails">
         <div className="left-div">
 
-
-         
-          { product && product.images  &&  <ImageCoursel allImages={product.images} interval_Time={2500} />}
-        
-
-
-
-
+          {product && product.images && <ImageCoursel allImages={product.images} interval_Time={2500} />}
 
         </div>
         <div className="right-div">
@@ -117,12 +114,12 @@ function ProductDetails() {
             <p>Product # {product._id}</p>
           </div>
           <div className="detailsBlock-2">
-            {product.ratings &&
-              // <ReactStars {...options} />}
-              // <Rating {...options} />
+            { product && product.reviews &&
               <Stars options={options} />
             }
+
             <span>{product.Num_of_reviews} Reviews</span>
+
           </div>
           <div className="detailsBlock-3">
             <h1>{`₹${product.price}`}</h1>
@@ -152,33 +149,11 @@ function ProductDetails() {
       </div>
 
       <h3 className="reviewsHeading">REVIEWS</h3>
-      <Dialog
-        aria-labelledby="simple-dialog-title"
-        open={open}
-        onClose={submitReviewToggle}
-      >
-        <DialogTitle>Submit Review</DialogTitle>
-        <DialogContent className="submitDialog">
-          {product.reviews &&
-            <Stars onChange={(e) => setRating(e.target.value)} options={options2} />
-          }
-          <textarea
-            className="submitDialogTextArea"
-            cols="30"
-            rows="5"
-            value={comment}
-            onChange={(e) => setComment(e.target.value)}
-          ></textarea>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={submitReviewToggle} color="secondary">
-            Cancel
-          </Button>
-          <Button onClick={reviewSubmitHandler} color="primary">
-            Submit
-          </Button>
-        </DialogActions>
-      </Dialog>
+
+
+      <Modal options={options2} modal={modal} setModal={setModal} rating={rating} setRating={setRating} handleSubmit={reviewSubmitHandler} comment={comment} setComment={setComment} />
+
+
       {product && product.reviews && product.reviews[0] ? (
         <div className="reviews">
           {product && product.reviews &&
@@ -189,6 +164,9 @@ function ProductDetails() {
       ) : (
         <p className="noReviews">No Reviews Yet</p>
       )}
+
+
+
     </>
 
 

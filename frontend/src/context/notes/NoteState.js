@@ -492,13 +492,18 @@ const newReview = async ( newReviewForm ) => {
     const data = await response.json()
     if (data.Error_message) {
       setError_message(data.Error_message)
+      setLoading(false)
     }
     if (data.message) {
       setMessage(data.message)
       setIsUpdated(data.success)
+      console.log("for stars" , data );
+      setIsUpdated(true)
+      setLoading(false)
     }
-    setLoading(false)
+
 } 
+
 // ***********************************************************************************************************
 // ***********************************************************************************************************
 
@@ -507,6 +512,7 @@ const newReview = async ( newReviewForm ) => {
 // ***********************************************************************************************************
 
 // Admin_getAllProducts
+
 const Admin_getAllProducts = async ( ) => {
     setLoading(true)
     const response = await fetch(`${host}/api/v1/admin/products`, {
