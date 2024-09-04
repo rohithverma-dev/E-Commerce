@@ -9,7 +9,6 @@
   }
   
   .products {
-
     display: flex;
     width: 80vw;
     margin: 2vmax auto;
@@ -98,8 +97,22 @@
   .filterBox > fieldset {
     border: 1px solid rgba(0, 0, 0, 0.329);
   }
+
+  h3{
+    color: rgb(255, 155, 73);
+    color: tomato;
+    font-size: 1.2vmax;
+    font-weight: 401;
+    font-family: "Roboto", sans-serif;
+    margin-bottom: 1vmax;
+    margin-top: 18px;
+  }
   
   @media screen and (max-width: 600px) {
+    h3{
+      font-size: 1.7vmax;
+    }
+    
     .filterBox {
       width: 20vmax;
       position: static;

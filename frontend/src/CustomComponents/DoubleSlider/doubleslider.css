@@ -1,0 +1,123 @@
+.wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-around; */
+    background-color: transparent;
+    background-color: rgba(245, 222, 179, 0.47);
+    border-radius: 1vmax;
+    padding: 0.2vmax 1vmax;
+}
+
+.price-input {
+    width: 100%;
+    display: flex;
+    margin: 28px 0;
+    align-items: center;
+}
+
+.price-input .field {
+    height: 5px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+.price-input .field span{
+    font-size: 1vmax;
+}
+.field input {
+    width: 40px;
+    height: 20px;
+    margin-left: 5px;
+    border: 1px solid grey;
+    font-size: 1vmax;
+}
+
+.price-input .separator {
+    width: 10vmax;
+    display: flex;
+    font-size: 1.5vmax;
+    align-items: center;
+    justify-content: center;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+.slider {
+    height: 3px;
+    border-radius: 5px;
+    background-color: white;
+    background-color: rgba(0, 0, 0, 0.648);
+    position: relative;
+}
+
+.slider .progress {
+    position: absolute;
+    left: 25%;
+    right: 25%;
+    height: 3px;
+    background-color: rgb(113, 220, 255);
+    background-color: rgba(30, 199, 255, 0.794);
+    border-radius: 5px;
+}
+
+.range-input {
+    position: relative;
+}
+
+.range-input input {
+    position: absolute;
+    top: -4px;
+    height: 5px;
+    width: 100%;
+    background-color: transparent;
+    -webkit-appearance: none;
+    pointer-events: none;
+}
+
+
+input[type="range"]::-webkit-slider-thumb {
+    height: 1vmax;
+    width: 1vmax;
+    border-radius: 50%;
+    background-color: lightblue;
+    background-color: rgb(244, 82, 33);
+    -webkit-appearance: none;
+    pointer-events: auto;
+}
+
+
+@media screen and (max-width:1000px) {
+    input[type="range"]::-webkit-slider-thumb {
+        height: 1.5vmax;
+        width: 1.5vmax;
+    }
+    .field input {
+        font-size: 1.5vmax;
+        width: 60px;
+    }
+    .price-input .field span{
+        font-size: 1.5vmax;
+    }
+        
+}
+@media screen and (max-width:700px) {
+    .wrapper {
+        width: 120%;
+    }
+    input[type="range"]::-webkit-slider-thumb {
+        height: 2vmax;
+        width: 2vmax;
+    }
+    .field input {
+        font-size: 2vmax;
+        width: 60px;
+    }
+    .price-input .field span{
+        font-size: 2vmax;
+    }
+}
