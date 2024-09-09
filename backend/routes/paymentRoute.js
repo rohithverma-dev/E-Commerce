@@ -9,3 +9,4 @@ router.route("/stripeapikey").get(isAuthenticatedUser, sendStripeApiKey);  // do
 router.route("/payment/process").post(isAuthenticatedUser, processPayment);  // done
 
 module.exports = router;
+
