@@ -32,6 +32,7 @@ function Products() {
   const context = useContext(noteContext);
   let { getAllProducts, Count, filteredProducts, PerPage, products, loading } = context;
 
+
   useEffect(() => {
     // setCategory("")
     // console.log("useEffect",category);
@@ -83,12 +84,14 @@ function Products() {
             ))}
           </ul>
 
+
           <h3 >Ratings Above</h3>
           <div className="ratingAbove"  >
             <SingleSlider rating={ratings} setRating={setRatings} min={0} max={5} />
           </div>
 
         </div>
+
 
         {PerPage < filteredProducts && (
           <div className="paginationBox">
