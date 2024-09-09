@@ -1,11 +1,12 @@
 import React, { Fragment , useContext , useEffect } from "react";
 import "./Cart.css";
 import CartItemCard from "./CartItemCard.js";
-import { Typography } from "@material-ui/core";
-import RemoveShoppingCartIcon from "@material-ui/icons/RemoveShoppingCart";
+import { MdRemoveShoppingCart } from "react-icons/md";
+
 import noteContext from "../../context/notes/noteContext.js"
 import Loading from "../layout/Loader/Loader.js"
 import { Link, useNavigate } from "react-router-dom";
+
 
 const Cart = () => { 
   let history = useNavigate();
@@ -23,7 +24,7 @@ const Cart = () => {
   }
   setLoading(false)
 
-    
+
   }, [isUpdated , setLoading]);  
 
 
@@ -57,11 +58,10 @@ const Cart = () => {
       {loading? (<Loading/>) : (  <Fragment>
       {cartItems.length === 0 ? (
         <div className="emptyCart">
-          <RemoveShoppingCartIcon />
-          <Typography>No Product in Your Cart</Typography>
+          <MdRemoveShoppingCart />
+          <h1 style={{fontWeight:'normal' , margin:'40px' }} >No Product in Your Cart</h1>
           <Link to="/products">View Products</Link>
           <br />
-          
           <Link to="/orders">My Orders</Link>
         </div>
       ) : (
@@ -81,7 +81,7 @@ const Cart = () => {
                     <button onClick={() =>  decreaseQuantity(item.product, item.quantity)  }  >
                       -
                     </button>
-                    <input type="number" value={item.quantity} readOnly />
+                    <input style={{backgroundColor:'black' , color:'white' }} type="number" value={item.quantity} readOnly />
                     <button onClick={() => increaseQuantity(item.product, item.quantity, item.stock  )}>
                       +
                     </button>

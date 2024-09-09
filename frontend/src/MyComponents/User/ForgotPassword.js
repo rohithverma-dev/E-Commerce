@@ -1,6 +1,6 @@
 import React, {Fragment ,  useState, useEffect,useContext } from "react";
 import "./ForgotPassword.css";
-import MailOutlineIcon from "@material-ui/icons/MailOutline";
+import { GoMail } from "react-icons/go";
 import Loading from "../layout/Loader/Loader.js"
 import noteContext from "../../context/notes/noteContext.js";
 import MetaData from "../layout/MetaData";
@@ -32,7 +32,7 @@ const ForgotPassword = () => {
 
               <form  className="forgotPasswordForm"  onSubmit={forgotPasswordSubmit}  >
                 <div className="forgotPasswordEmail">
-                  <MailOutlineIcon />
+                  <GoMail/>
                   <input  type="email"  placeholder="Email"  required  name="email"  value={email}  onChange={(e) => setEmail(e.target.value)} />
                 </div>
                 <input  type="submit"  value="Send"  className="forgotPasswordBtn" />

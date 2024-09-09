@@ -100,74 +100,69 @@ function ProductDetails() {
 
 
   return (
-    loading? <Loader/> : 
-    <>
-      <div className="ProductDetails">
-        <div className="left-div">
-
-          {product && product.images && <ImageCoursel allImages={product.images} interval_Time={2500} />}
-
-        </div>
-        <div className="right-div">
-          <div className="detailsBlock-1">
-            <h1>{product.name}</h1>
-            <p>Product # {product._id}</p>
+    loading ? <Loader /> :
+      <>
+        <div className="ProductDetails">
+          <div className="left-div">
+            {product && product.images && <ImageCoursel allImages={product.images} interval_Time={2500} />}
           </div>
-          <div className="detailsBlock-2">
-            { product && product.reviews &&
-              <Stars options={options} />
-            }
-
-            <span>{product.Num_of_reviews} Reviews</span>
-
-          </div>
-          <div className="detailsBlock-3">
-            <h1>{`₹${product.price}`}</h1>
-            <div className="detailsBlock-3-1">
-              <div className="detailsBlock-3-1-1">
-                <button onClick={decreaseQuantity}>-</button>
-                <input readOnly type="number" value={quantity} />
-                <button onClick={increaseQuantity}>+</button>
-              </div>
-              {(product.Stock >= 1) &&
-                <button disabled={product.Stock < 1 ? true : false} onClick={addToCartHandler} >Add to Cart </button>
-              }
+          <div className="right-div">
+            <div className="detailsBlock-1">
+              <h1>{product.name}</h1>
+              <p>Product # {product._id}</p>
             </div>
-            <h1>
-              Status:
-              <b className={product.Stock < 1 ? "redColor" : "greenColor"}>
-                {product.Stock < 1 ? "OutOfStock" : "InStock"}
-              </b>
-            </h1>
+            <div className="detailsBlock-2">
+              {product && product.reviews &&
+                <Stars options={options} />
+              }
+              <span>{product.Num_of_reviews} Reviews</span>
+            </div>
+            <div className="detailsBlock-3">
+              <h1>{`₹${product.price}`}</h1>
+              <div className="detailsBlock-3-1">
+                <div className="detailsBlock-3-1-1">
+                  <button onClick={decreaseQuantity}>-</button>
+                   <input style={{backgroundColor:'black' , color:'white' }} readOnly type="number" value={quantity} />
+                  <button onClick={increaseQuantity}>+</button>
+                </div>
+                {(product.Stock >= 1) &&
+                  <button disabled={product.Stock < 1 ? true : false} onClick={addToCartHandler} >Add to Cart </button>
+                }
+              </div>
+              <h1>
+                Status:
+                <b className={product.Stock < 1 ? "redColor" : "greenColor"}>
+                  {product.Stock < 1 ? "OutOfStock" : "InStock"}
+                </b>
+              </h1>
+            </div>
+            <div className="detailsBlock-4">
+              Description : <h4 style={{ fontWeight: 'normal' }} >{product.description}</h4>
+            </div>
+            <button onClick={submitReviewToggle} className="submitReview"> Submit Review</button>
           </div>
-          <div className="detailsBlock-4">
-            Description : <h3>{product.description}</h3>
+        </div>
+
+        <h3 className="reviewsHeading">REVIEWS</h3>
+
+
+        <Modal options={options2} modal={modal} setModal={setModal} rating={rating} setRating={setRating} handleSubmit={reviewSubmitHandler} comment={comment} setComment={setComment} />
+
+
+        {product && product.reviews && product.reviews[0] ? (
+          <div className="reviews">
+            {product && product.reviews &&
+              product.reviews.map((review) => (
+                <ReviewCard key={review._id} review={review} />
+              ))}
           </div>
-          <button onClick={submitReviewToggle} className="submitReview"> Submit Review</button>
-          {/* <button  className="submitReview"> Submit Review</button> */}
-        </div>
-      </div>
-
-      <h3 className="reviewsHeading">REVIEWS</h3>
-
-
-      <Modal options={options2} modal={modal} setModal={setModal} rating={rating} setRating={setRating} handleSubmit={reviewSubmitHandler} comment={comment} setComment={setComment} />
-
-
-      {product && product.reviews && product.reviews[0] ? (
-        <div className="reviews">
-          {product && product.reviews &&
-            product.reviews.map((review) => (
-              <ReviewCard key={review._id} review={review} />
-            ))}
-        </div>
-      ) : (
-        <p className="noReviews">No Reviews Yet</p>
-      )}
+        ) : (
+          <p className="noReviews">No Reviews Yet</p>
+        )}
 
 
 
-    </>
+      </>
 
 
   );

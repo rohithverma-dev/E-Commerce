@@ -633,6 +633,7 @@ const Admin_getAllReviews = async (id ) => {
         },
       });
       const data = await response.json()
+      console.log("review-data" , data);
       if (data.Error_message) {
         setError_message(data.Error_message)
       }

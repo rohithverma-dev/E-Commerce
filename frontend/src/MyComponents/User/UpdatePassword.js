@@ -2,9 +2,10 @@ import Loading from "../layout/Loader/Loader.js"
 import React, { Fragment ,  useState, useEffect } from "react";
 import "./UpdatePassword.css";
 import MetaData from "../layout/MetaData";
-import LockOpenIcon from "@material-ui/icons/LockOpen";
-import LockIcon from "@material-ui/icons/Lock";
-import VpnKeyIcon from "@material-ui/icons/VpnKey";
+
+import { BiSolidLockOpen } from "react-icons/bi";
+import { FaLock } from "react-icons/fa";
+import { MdVpnKey } from "react-icons/md";
 import { useContext } from "react";
 import noteContext from "../../context/notes/noteContext.js";
 import { useNavigate  } from "react-router-dom";
@@ -60,7 +61,8 @@ const { user, isUpdated , setIsUpdated , updateUserPassword , loading } = contex
                 onSubmit={updatePasswordSubmit}
               >
                 <div className="loginPassword">
-                  <VpnKeyIcon />
+                  <MdVpnKey />
+
                   <input
                     type="password"
                     placeholder="Old Password"
@@ -71,7 +73,7 @@ const { user, isUpdated , setIsUpdated , updateUserPassword , loading } = contex
                 </div>
 
                 <div className="loginPassword">
-                  <LockOpenIcon />
+                  <BiSolidLockOpen/>
                   <input
                     type="password"
                     placeholder="New Password"
@@ -81,7 +83,7 @@ const { user, isUpdated , setIsUpdated , updateUserPassword , loading } = contex
                   />
                 </div>
                 <div className="loginPassword">
-                  <LockIcon />
+                  <FaLock />
                   <input
                     type="password"
                     placeholder="Confirm Password"

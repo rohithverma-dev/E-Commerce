@@ -1,0 +1,44 @@
+th,
+td {
+    border: 1px solid pink;
+    font-size: 15px;
+    text-align: center;
+}
+th{
+    background-color: tomato;
+    color: white;
+    padding: 10px 0;
+    text-transform: uppercase;
+}
+td{
+    padding: 10px 0;
+}
+td:hover{
+    padding: 10px 0;
+    color: rgb(255, 119, 95);
+}
+tr:hover{
+    background-color: rgba(0, 0, 0, 0.103);
+    transition: 0.5s;
+    /* cursor: pointer; */
+}
+.actions a{
+    margin: 0 10px;
+    font-size: 22px;
+    color: rgb(0, 5, 19);
+    cursor: pointer;
+}
+.actions a:hover{
+    color: tomato;
+}
+
+
+
+
+
+
+
+
+
+
+

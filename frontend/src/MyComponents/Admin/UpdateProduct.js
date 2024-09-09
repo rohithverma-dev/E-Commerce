@@ -1,26 +1,28 @@
 import React, { Fragment, useEffect, useState, useContext } from "react";
 
-import { Button } from "@material-ui/core";
 import MetaData from "../layout/MetaData";
-import AccountTreeIcon from "@material-ui/icons/AccountTree";
-import DescriptionIcon from "@material-ui/icons/Description";
-import StorageIcon from "@material-ui/icons/Storage";
-import SpellcheckIcon from "@material-ui/icons/Spellcheck";
-import AttachMoneyIcon from "@material-ui/icons/AttachMoney";
+
 import noteContext from "../../context/notes/noteContext.js"
 import SideBar from "./Sidebar";
-import {  useParams} from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Loading from "../layout/Loader/Loader.js"
-import { Link , useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+
+
+
+import { LiaSpellCheckSolid } from "react-icons/lia";
+import { FaDollarSign } from "react-icons/fa";
+import { MdCategory, MdDescription } from "react-icons/md";
+import { BsStack } from "react-icons/bs";
 
 
 
 const UpdateProduct = () => {
-  const { id } = useParams();
-  let history = useNavigate();
+    const { id } = useParams();
+    let history = useNavigate();
 
     const context = useContext(noteContext);
-    const { Admin_updateProduct, getProductDetails , product , isUpdated , setIsUpdated , loading } = context;
+    const { Admin_updateProduct, getProductDetails, product, isUpdated, setIsUpdated, loading } = context;
 
 
     const [name, setName] = useState("");
@@ -45,7 +47,7 @@ const UpdateProduct = () => {
     const productId = id;
 
     useEffect(() => {
-       
+
         if (product && product._id !== productId) {
             getProductDetails(productId);
         } else {
@@ -63,7 +65,7 @@ const UpdateProduct = () => {
             setIsUpdated(false)
             history("/admin/products");
         }
-    }, [  isUpdated,  productId, product ]);
+    }, [isUpdated, productId, product]);
 
     const updateProductSubmitHandler = (e) => {
         e.preventDefault();
@@ -106,20 +108,20 @@ const UpdateProduct = () => {
     return (
         // <Fragment>
         //     {loading? (<Loading/>) : (
-                 <Fragment>
+        <Fragment>
             <MetaData title="Create Product" />
             <div className="dashboard">
                 <SideBar />
                 <div className="newProductContainer">
-            {loading? (<Loading/>) : (   <form
+                    {loading ? (<Loading />) : (<form
                         className="createProductForm"
                         encType="multipart/form-data"
                         onSubmit={updateProductSubmitHandler}
                     >
                         <h1>Update Product</h1>
-
+                        
                         <div>
-                            <SpellcheckIcon />
+                            <LiaSpellCheckSolid />
                             <input
                                 type="text"
                                 placeholder="Product Name"
@@ -129,7 +131,7 @@ const UpdateProduct = () => {
                             />
                         </div>
                         <div>
-                            <AttachMoneyIcon />
+                            <FaDollarSign />
                             <input
                                 type="number"
                                 placeholder="Price"
@@ -140,14 +142,14 @@ const UpdateProduct = () => {
                         </div>
 
                         <div>
-                            <DescriptionIcon />
+                            <MdDescription />
 
                             <textarea placeholder="Product Description" value={description} onChange={(e) => setDescription(e.target.value)} cols="30" rows="1"
                             ></textarea>
                         </div>
 
                         <div>
-                            <AccountTreeIcon />
+                            <MdCategory />
                             <select
                                 value={category}
                                 onChange={(e) => setCategory(e.target.value)}
@@ -162,12 +164,13 @@ const UpdateProduct = () => {
                         </div>
 
                         <div>
-                            <StorageIcon />
+                            <BsStack />
+
                             <input type="number" placeholder="Stock" required onChange={(e) => setStock(e.target.value)} value={Stock} />
                         </div>
 
                         <div id="createProductFormFile">
-                            <input  type="file"  name="avatar"  accept="image/*"  onChange={updateProductImagesChange}  multiple />
+                            <input type="file" name="avatar" accept="image/*" onChange={updateProductImagesChange} multiple />
                         </div>
 
                         <div id="createProductFormImage">
@@ -183,25 +186,25 @@ const UpdateProduct = () => {
                             ))}
                         </div>
 
-                        <Button
+                        <button
                             id="createProductBtn"
                             type="submit"
                             disabled={
-                                loading ? true : false 
+                                loading ? true : false
                                 // loading ? true : false || category === "" ? true : false
                             }
                         >
                             Update
-                        </Button>
+                        </button>
                     </form>
-                     ) }
-                 
+                    )}
+
                 </div>
             </div>
-        {/* </Fragment>) } */}
+            {/* </Fragment>) } */}
         </Fragment>
 
-       
+
     );
 };
 

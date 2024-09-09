@@ -1,17 +1,16 @@
 import React, { Fragment, useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { DataGrid } from "@material-ui/data-grid";
 import "./productReviews.css";
-import { Button } from "@material-ui/core";
 import MetaData from "../layout/MetaData";
-import DeleteIcon from "@material-ui/icons/Delete";
 import Loading from "../layout/Loader/Loader.js"
-import Star from "@material-ui/icons/Star";
+import { IoIosStar } from "react-icons/io";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import SideBar from "./Sidebar";
-import noteContext from "../../context/notes/noteContext.js"
+import noteContext from "../../context/notes/noteContext.js";
+import ColumnRow from "../../CustomComponents/ColumnRowTable/ColumnRow.js";
+
 
 
 const ProductReviews = () => {
@@ -19,11 +18,11 @@ const ProductReviews = () => {
   const context = useContext(noteContext);
   const { Admin_getAllReviews, admin_allreviews, Admin_deleteReview, isDeleted, setIsDeleted, loading } = context;
 
-
   const [productId, setProductId] = useState("");
 
-  const deleteReviewHandler = (reviewId) => {
-    Admin_deleteReview(reviewId, productId);
+  const deleteReviewHandler = (  reviewId) => {
+    console.log("donneee" ,  reviewId , typeof reviewId );
+    Admin_deleteReview( Number(reviewId) , productId);
   };
 
   const productReviewsSubmitHandler = (e) => {
@@ -57,63 +56,18 @@ const ProductReviews = () => {
     }
   }, [isDeleted]);
 
+
+
   const columns = [
-    { field: "id", headerName: "Review ID", minWidth: 200, flex: 0.5 },
-
-    {
-      field: "user",
-      headerName: "User",
-      minWidth: 200,
-      flex: 0.6,
-    },
-
-    {
-      field: "comment",
-      headerName: "Comment",
-      minWidth: 350,
-      flex: 1,
-    },
-
-    {
-      field: "rating",
-      headerName: "Rating",
-      type: "number",
-      minWidth: 180,
-      flex: 0.4,
-
-      cellClassName: (params) => {
-        return params.getValue(params.id, "rating") >= 3
-          ? "greenColor"
-          : "redColor";
-      },
-    },
-
+    { field: "id", headerName: "Review ID", flex: 2 },
+    { field: "user", headerName: "User", flex: 1.5, },
+    { field: "comment", headerName: "Comment", flex: 1, },
+    { field: "rating", headerName: "Rating", flex: 1, },
     {
       field: "actions",
-      flex: 0.3,
+      flex: 1.2,
       headerName: "Actions",
-      minWidth: 150,
-      type: "number",
-      sortable: false,
-      renderCell: (params) => {
-        return (
-
-          <Fragment>
-            {loading ? (<Loading />) : (
-              <Fragment>
-                <Button
-                  onClick={() =>
-                    deleteReviewHandler(params.getValue(params.id, "id"))
-                  }
-                >
-                  <DeleteIcon />
-                </Button>
-              </Fragment>)}
-          </Fragment>
-
-
-        );
-      },
+      actions: [ { type: 'delete' }]
     },
   ];
 
@@ -141,9 +95,8 @@ const ProductReviews = () => {
             onSubmit={productReviewsSubmitHandler}
           >
             <h1 className="productReviewsFormHeading">ALL REVIEWS</h1>
-
             <div>
-              <Star />
+              <IoIosStar />
               <input
                 type="text"
                 placeholder="Product Id"
@@ -153,7 +106,7 @@ const ProductReviews = () => {
               />
             </div>
 
-            <Button
+            <button
               id="createProductBtn"
               type="submit"
               disabled={
@@ -161,23 +114,15 @@ const ProductReviews = () => {
               }
             >
               Search
-            </Button>
+            </button>
           </form>
-
-
 
           {admin_allreviews && admin_allreviews.length > 0 ? (
             loading ? (<Loading />) : (
-              <DataGrid
-                rows={rows}
-                columns={columns}
-                pageSize={10}
-                disableSelectionOnClick
-                className="productListTable"
-                autoHeight
-              />
+              <div style={{ width: '1600px' }}  >
+                <ColumnRow handleAction={deleteReviewHandler} columns={columns} rows={rows} />
+              </div>
             )
-
           ) : (
             <h1 className="productReviewsFormHeading">No Reviews Found</h1>
           )}

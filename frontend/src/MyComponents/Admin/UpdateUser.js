@@ -1,14 +1,13 @@
 import React, { Fragment, useEffect, useState, useContext } from "react";
-import { Button } from "@material-ui/core";
 import MetaData from "../layout/MetaData";
-import MailOutlineIcon from "@material-ui/icons/MailOutline";
-import PersonIcon from "@material-ui/icons/Person";
-import VerifiedUserIcon from "@material-ui/icons/VerifiedUser";
 import SideBar from "./Sidebar";
 import {  useParams} from "react-router-dom";
 import { Link , useNavigate } from "react-router-dom";
 import noteContext from "../../context/notes/noteContext.js"
 import Loading from "../layout/Loader/Loader.js"
+import { IoPerson } from "react-icons/io5";
+import { GoMail } from "react-icons/go";
+import { MdVerifiedUser } from "react-icons/md";
 
 
 const UpdateUser = () => {
@@ -72,7 +71,7 @@ const UpdateUser = () => {
               <h1>Update User</h1>
 
               <div>
-                <PersonIcon />
+                <IoPerson />
                 <input
                   type="text"
                   placeholder="Name"
@@ -82,7 +81,7 @@ const UpdateUser = () => {
                 />
               </div>
               <div>
-                <MailOutlineIcon />
+                <GoMail />
                 <input
                   type="email"
                   placeholder="Email"
@@ -93,7 +92,7 @@ const UpdateUser = () => {
               </div>
 
               <div>
-                <VerifiedUserIcon />
+                <MdVerifiedUser />
                 <select value={role} onChange={(e) => setRole(e.target.value)}>
                   <option value="">Choose Role</option>
                   <option value="admin">Admin</option>
@@ -101,7 +100,7 @@ const UpdateUser = () => {
                 </select>
               </div>
 
-              <Button
+              <button
                 id="createProductBtn"
                 type="submit"
                 disabled={
@@ -109,7 +108,7 @@ const UpdateUser = () => {
                 }
               >
                 Update
-              </Button>
+              </button>
             </form>
             )}
     

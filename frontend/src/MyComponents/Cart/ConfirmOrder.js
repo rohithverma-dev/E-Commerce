@@ -1,12 +1,13 @@
 import React, { Fragment, useEffect } from "react";
-import CheckoutSteps from "../Cart/CheckoutSteps";
+// import CheckoutSteps from "../Cart/CheckoutSteps";
+import CheckoutSteps from "../../CustomComponents/CheckoutSteps/CheckoutSteps.js"
 import MetaData from "../layout/MetaData";
 import "./ConfirmOrder.css";
 import { Link, useNavigate } from "react-router-dom";
-import { Typography } from "@material-ui/core";
 import noteContext from "../../context/notes/noteContext.js"
 import Loading from "../layout/Loader/Loader.js"
 import { useContext } from "react";
+
 
 
 const ConfirmOrder = () => {
@@ -50,7 +51,7 @@ const ConfirmOrder = () => {
          <div className="confirmOrderPage">
         <div>
           <div className="confirmshippingArea">
-            <Typography>Shipping Info</Typography>
+            <h2 style={{fontWeight:'normal'}} >Shipping Info</h2>
             <div className="confirmshippingAreaBox">
               <div>
                  <p>Name:</p> <span>{user.name}</span>
@@ -64,7 +65,7 @@ const ConfirmOrder = () => {
             </div>
           </div>
           <div className="confirmCartItems">
-            <Typography>Your Cart Items:</Typography>
+            <h2 style={{fontWeight:'normal'}}  >Your Cart Items:</h2>
             <div className="confirmCartItemsContainer">
               {cartItems &&
                 cartItems.map((item) => (
@@ -83,7 +84,7 @@ const ConfirmOrder = () => {
         </div>
         <div>
           <div className="orderSummary">
-            <Typography>Order Summery</Typography>
+            <h2 style={{fontWeight:'normal'}} >Order Summery</h2>
             <div>
               <div>
                 <p>Subtotal:</p>

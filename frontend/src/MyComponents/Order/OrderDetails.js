@@ -2,7 +2,6 @@ import React, { Fragment, useEffect , useContext} from "react";
 import "./orderDetails.css";
 import MetaData from "../layout/MetaData";
 import { Link , useNavigate , useParams} from "react-router-dom";
-import { Typography } from "@material-ui/core";
 import noteContext from "../../context/notes/noteContext.js"
 import Loading from "../layout/Loader/Loader.js"
 
@@ -24,10 +23,10 @@ const OrderDetails = () => {
         {loading?(<Loading/>):(  <Fragment>
           <div className="orderDetailsPage">
             <div className="orderDetailsContainer">
-              <Typography component="h1">
+              <h1 style={{ fontWeight:'normal' }} component="h1">
                 Order #{myorder && myorder._id}
-              </Typography>
-              <Typography>Shipping Info</Typography>
+              </h1>
+              <h2 style={{ fontWeight:'normal' }}>Shipping Info</h2>
               <div className="orderDetailsContainerBox">
                 <div>
                   <p>Name:</p>
@@ -47,7 +46,7 @@ const OrderDetails = () => {
                   </span>
                 </div>
               </div>
-              <Typography>Payment</Typography>
+              <h2 style={{ fontWeight:'normal' }}>Payment</h2>
               <div className="orderDetailsContainerBox">
                 <div>
                   <p
@@ -71,7 +70,7 @@ const OrderDetails = () => {
                 </div>
               </div>
 
-              <Typography>Order Status</Typography>
+              <h2 style={{ fontWeight:'normal' }}>Order Status</h2>
               <div className="orderDetailsContainerBox">
                 <div>
                   <p
@@ -88,7 +87,7 @@ const OrderDetails = () => {
             </div>
 
             <div className="orderDetailsCartItems">
-              <Typography>Order Items:</Typography>
+              <h2 style={{ fontWeight:'normal' }}>Order Items:</h2>
               <div className="orderDetailsCartItemsContainer">
                 { myorder && myorder.orderItems &&
                   myorder.orderItems.map((item) => (

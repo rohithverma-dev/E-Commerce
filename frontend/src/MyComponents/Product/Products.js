@@ -3,8 +3,6 @@ import React, { Fragment, useContext, useEffect, useState } from "react";
 import MetaData from "../layout/MetaData.js";
 import ProductCard from "../Home/ProductCard.js";
 import Pagination from "react-js-pagination";
-import Slider from "@material-ui/core/Slider";
-import Typography from "@material-ui/core/Typography";
 import noteContext from "../../context/notes/noteContext.js";
 import Loading from "../layout/Loader/Loader.js"
 import "./Products.css";
@@ -63,30 +61,16 @@ function Products() {
         </div>
 
         <div className="filterBox">
-          {/* <Typography>Price</Typography> */}
+          
           <h3 >Price</h3>
-          {/* <Slider
-            value={price}
-            onChange={priceHandler}
-            valueLabelDisplay="auto"
-            aria-labelledby="range-slider"
-            min={0}
-            max={70000}
-            color="rgb(255, 0, 0)"
-          /> */}
-
-
           <div style={{ width: 180, height: 120 }} >
-            <DoubleSlider min={0} max={75000} diff={5000} price={price} setPrice={setPrice} />
-            {/* <DoubleSlider min={0} max={1000} diff={50} /> */}
+            <DoubleSlider min={0} max={75000} diff={10000} price={price} setPrice={setPrice} />
           </div>
 
 
 
 
-          {/* <Typography>Categories</Typography> */}
           <h3 >Categories</h3>
-
           <ul className="categoryBox">
             {categories.map((category) => (
               <li
@@ -103,6 +87,7 @@ function Products() {
           <div className="ratingAbove"  >
             <SingleSlider rating={ratings} setRating={setRatings} min={0} max={5} />
           </div>
+
         </div>
 
         {PerPage < filteredProducts && (

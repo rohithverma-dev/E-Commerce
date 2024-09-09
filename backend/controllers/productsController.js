@@ -433,8 +433,6 @@ exports.getProductReviews = async (req, res, next) => {
 exports.deleteProductReviews = async (req, res, next) => {
   try {
 
-
-
     const product = await Product.findById(req.query.productId)
     if (!product) {
         res.status(201).json({
@@ -446,10 +444,14 @@ exports.deleteProductReviews = async (req, res, next) => {
     const reviews = product.reviews.filter(
         (rev) => rev._id.toString() !== req.query.id.toString()
     )
+    
     let avg = 0
     reviews.forEach(rev => {
-        avg += rev.rating
+      avg += rev.rating
     })
+
+    console.log(reviews);
+
   let ratings = 0;
 
   if (reviews.length === 0) {

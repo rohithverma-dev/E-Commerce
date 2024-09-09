@@ -1,15 +1,13 @@
 import React from "react";
-import ErrorIcon from "@material-ui/icons/Error";
 import "./NotFound.css";
-import { Typography } from "@material-ui/core";
 import { Link } from "react-router-dom";
+import { BiSolidErrorCircle } from "react-icons/bi";
 
 const NotFound = () => {
   return (
-    <div className="PageNotFound">
-      <ErrorIcon />
-
-      <Typography>Page Not Found </Typography>
+    <div style={{fontSize:'22px'}} className="PageNotFound">
+     <BiSolidErrorCircle  />
+      <h1 style={{fontWeight:'normal'}}  >Page Not Found </h1>
       <Link to="/">Home</Link>
     </div>
   );

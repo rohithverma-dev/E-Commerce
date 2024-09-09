@@ -2,14 +2,14 @@ const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
 exports.processPayment = async (req, res, next) => {
   try {
-
-
   // console.log("backend processPayment");
   const myPayment = await stripe.paymentIntents.create({
     amount: req.body.amount,
     currency: "inr",
+    description: req.body.description,
     metadata: {                  // optional
       company: "E-Commerce",
+      integration_check: 'accept_a_payment'
     },
   });
 

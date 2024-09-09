@@ -1,7 +1,6 @@
 import React, { useEffect , useContext, Fragment } from "react";
 import Sidebar from "./Sidebar.js";
 import "./dashboard.css";
-import { Typography } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import { Doughnut, Line } from "react-chartjs-2";
 import noteContext from "../../context/notes/noteContext.js"
@@ -70,7 +69,7 @@ const Dashboard = () => {
       <Sidebar />
 
       <div className="dashboardContainer">
-        <Typography component="h1">Dashboard</Typography>
+        <h1 component="h1">Dashboard</h1>
 
         <div className="dashboardSummary">
           <div>

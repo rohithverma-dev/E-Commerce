@@ -1,14 +1,15 @@
 import React, { Fragment, useEffect, useState, useContext } from "react";
 import MetaData from "../layout/MetaData";
-import { Typography } from "@material-ui/core";
 import SideBar from "./Sidebar";
-import AccountTreeIcon from "@material-ui/icons/AccountTree";
-import { Button } from "@material-ui/core";
 import "./processOrder.css";
 import {  useParams} from "react-router-dom";
 import { Link , useNavigate } from "react-router-dom";
 import Loading from "../layout/Loader/Loader.js"
 import noteContext from "../../context/notes/noteContext.js"
+
+import { MdCategory } from "react-icons/md";
+
+
 
 
 const ProcessOrder = () => {
@@ -57,7 +58,7 @@ const ProcessOrder = () => {
             >
               <div>
                 <div className="confirmshippingArea">
-                  <Typography>Shipping Info</Typography>
+                  <h2 style={{fontWeight:'normal'}} >Shipping Info</h2>
                   <div className="orderDetailsContainerBox">
                     <div>
                       <p>Name:</p>
@@ -78,7 +79,7 @@ const ProcessOrder = () => {
                     </div>
                   </div>
 
-                  <Typography>Payment</Typography>
+                  <h2 style={{fontWeight:'normal'}} >Payment</h2>
                   <div className="orderDetailsContainerBox">
                     <div>
                       <p
@@ -102,7 +103,7 @@ const ProcessOrder = () => {
                     </div>
                   </div>
 
-                  <Typography>Order Status</Typography>
+                  < h2 style={{fontWeight:'normal'}}  >Order Status</h2>
                   <div className="orderDetailsContainerBox">
                     <div>
                       <p
@@ -118,7 +119,7 @@ const ProcessOrder = () => {
                   </div>
                 </div>
                 <div className="confirmCartItems">
-                  <Typography>Your Cart Items:</Typography>
+                  <h2 style={{fontWeight:'normal'}} >Your Cart Items:</h2>
                   <div className="confirmCartItemsContainer">
                     {myorder && myorder.orderItems &&
                       myorder.orderItems.map((item) => (
@@ -126,7 +127,7 @@ const ProcessOrder = () => {
                           <img src={item.image} alt="Product" />
                           <Link to={`/product/${item.product}`}>
                             {item.name}
-                          </Link>{" "}
+                          </Link>
                           <span>
                             {item.quantity} X ₹{item.price} ={" "}
                             <b>₹{item.price * item.quantity}</b>
@@ -148,7 +149,7 @@ const ProcessOrder = () => {
                   <h1>Process Order</h1>
 
                   <div>
-                    <AccountTreeIcon />
+                    <MdCategory />
                     <select onChange={(e) => setStatus(e.target.value)}>
                       <option value="">Choose Category</option>
                       {myorder && myorder.orderStatus === "Processing" && (
@@ -163,7 +164,7 @@ const ProcessOrder = () => {
                  <br/>
                  <br/>
                  <br/>
-                  <Button
+                  <button
                     id="createProductBtn"
                     type="submit"
                     disabled={
@@ -171,7 +172,7 @@ const ProcessOrder = () => {
                     }
                   >
                     Process
-                  </Button>
+                  </button>
                 </form>
               </div>
             </div>)}

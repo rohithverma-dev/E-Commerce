@@ -2,13 +2,13 @@ import React, { Fragment , useRef, useState, useEffect } from "react";
 import "./LoginSignUp.css";
 import Loading from "../layout/Loader/Loader.js"
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import MailOutlineIcon from "@material-ui/icons/MailOutline";
-import LockOpenIcon from "@material-ui/icons/LockOpen";
-import FaceIcon from "@material-ui/icons/Face";
+import { GoMail } from "react-icons/go";
 import noteContext from "../../context/notes/noteContext.js";
 import { useContext } from "react";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { BiSolidLockOpen } from "react-icons/bi";
+import { MdOutlineFaceUnlock } from "react-icons/md";
 
 function LoginSignUp() {
   
@@ -120,11 +120,11 @@ function LoginSignUp() {
 
           <form className="loginForm" ref={loginTab} onSubmit={loginSubmit} >
             <div className="loginEmail">
-              <MailOutlineIcon />
+              <GoMail/>
               <input  type="email"  placeholder="Email"  required  value={loginEmail}  onChange={(e) => setLoginEmail(e.target.value)}  />
             </div>
             <div className="loginPassword">
-              <LockOpenIcon />
+              <BiSolidLockOpen />
               <input  type="password"  placeholder="Password"  required  value={loginPassword}  onChange={(e) => setLoginPassword(e.target.value)}  />
             </div>
 
@@ -134,22 +134,21 @@ function LoginSignUp() {
 
           <form className="signUpForm" ref={registerTab} encType="multipart/form-data" onSubmit={registerSubmit} >
             <div className="signUpName">
-              <FaceIcon />
+              <MdOutlineFaceUnlock />
               <input  type="text"  placeholder="Name"  required  name="name"  value={name}  onChange={registerDataChange}  />
             </div>
             <div className="signUpEmail">
-              <MailOutlineIcon />
+              <GoMail/>
               <input  type="email"  placeholder="Email"  required  name="email"  value={email}  onChange={registerDataChange}  />
             </div>
             <div className="signUpPassword">
-              <LockOpenIcon />
+              <BiSolidLockOpen />
               <input type="password" placeholder="Password" required  name="password" value={password}  onChange={registerDataChange}  />
             </div>
             <div id="registerImage">
               <img src={avatarPreview} alt="Avatar Preview" />
               <input  type="file"  name="avatar"  accept="image/*"  onChange={registerDataChange} />
             </div>
-
             <input type="submit" value="Register" className="signUpBtn" />
           </form>
 

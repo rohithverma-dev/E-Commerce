@@ -1,20 +1,16 @@
 import React, { Fragment, useContext, useEffect, useState } from "react";
 import "./Shipping.css";
 import MetaData from "../layout/MetaData";
-import PinDropIcon from "@material-ui/icons/PinDrop";
-import HomeIcon from "@material-ui/icons/Home";
-import LocationCityIcon from "@material-ui/icons/LocationCity";
-import PublicIcon from "@material-ui/icons/Public";
-import PhoneIcon from "@material-ui/icons/Phone";
-import TransferWithinAStationIcon from "@material-ui/icons/TransferWithinAStation";
+import CheckoutSteps from "../../CustomComponents/CheckoutSteps/CheckoutSteps.js"
 import { Country, State } from "country-state-city";
-import CheckoutSteps from "../Cart/CheckoutSteps.js";
 import { useNavigate } from "react-router-dom";
 import Loading from "../layout/Loader/Loader.js"
 import noteContext from "../../context/notes/noteContext.js"
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { FaHome, FaPhoneAlt } from "react-icons/fa";
+import { MdLocationCity, MdOutlineTransferWithinAStation, MdPinDrop, MdPublic } from "react-icons/md";
 
 const Shipping = () => {
   let history = useNavigate(); 
@@ -51,6 +47,7 @@ const Shipping = () => {
     saveShippingInfo({ address, city, state, country, pinCode, phoneNo })
     // history("/order/confirm");
   };
+
   useEffect(() => {
     setShippingInfo( localStorage.getItem("shippingInfo")  ? JSON.parse( localStorage.getItem("shippingInfo")):[] )
 
@@ -75,27 +72,27 @@ const Shipping = () => {
 
           <form  className="shippingForm"  encType="multipart/form-data"  onSubmit={shippingSubmit}  >
             <div>
-              <HomeIcon />
+              <FaHome />
               <input type="text" placeholder="Address"  required  value={address}  onChange={(e) => setAddress(e.target.value)} />
             </div>
 
             <div>
-              <LocationCityIcon />
+              <MdLocationCity />
               <input  type="text"  placeholder="City"  required  value={city}  onChange={(e) => setCity(e.target.value)}  />
             </div>
 
             <div>
-              <PinDropIcon />
+              <MdPinDrop />
               <input  type="number" placeholder="Pin Code"  required  value={pinCode}  onChange={(e) => setPinCode(e.target.value)}  />
             </div>
 
             <div>
-              <PhoneIcon />
+              <FaPhoneAlt />
               <input  type="number"  placeholder="Phone Number"  required  value={phoneNo}  onChange={(e) => setPhoneNo(e.target.value)}   size="10"  />
             </div>
 
             <div>
-              <PublicIcon />
+              <MdPublic />
               <select  required  value={country}  onChange={(e) => setCountry(e.target.value)}  >
                 <option value="">Country</option>
                 {Country &&
@@ -109,8 +106,7 @@ const Shipping = () => {
   
             {country && (
               <div>
-                <TransferWithinAStationIcon />
-
+                <MdOutlineTransferWithinAStation />
                 <select  required  value={state}  onChange={(e) => setState(e.target.value)}   >
                   <option value="">State</option>
                   {State &&
