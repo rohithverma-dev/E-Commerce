@@ -3,7 +3,7 @@ const app = express();
 var cors = require('cors');
 const dotenv = require("dotenv");
 // config   
-dotenv.config({path:"backend/config/config.env"})
+dotenv.config({path:"./config/config.env"})
 const corsConfig = {
     origin: process.env.FRONTEND_URL,               // Your frontend URL on Vercel
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
