@@ -50,6 +50,7 @@ import About from "./MyComponents/layout/About/About";
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import {STRIPE_API_KEY_URL} from "./AllUrls.js"
 
 
 function App() {
@@ -58,7 +59,7 @@ function App() {
   const [stripeApiKey, setStripeApiKey] = useState("");
 
   const getStripeApiKey = async () => {
-    const response = await fetch(`http://localhost:4000/api/v1/stripeapikey`, {
+    const response = await fetch(STRIPE_API_KEY_URL, {
       method: "GET",
       credentials: 'include', // Don't forget to specify this if you need cookies for chrome or other browser
       headers: {

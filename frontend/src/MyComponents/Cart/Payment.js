@@ -18,6 +18,7 @@ import "./payment.css";
 import { FaCreditCard } from "react-icons/fa6";
 import { BsCalendar2EventFill } from "react-icons/bs";
 import { MdOutlineVpnKey } from "react-icons/md";
+import { PAYMENT_PROCESS } from "../../AllUrls.js";
 
 
 
@@ -55,7 +56,7 @@ const Payment = () => {
     e.preventDefault();
     payBtn.current.disabled = true;
     try {
-      const response = await fetch(`http://localhost:4000/api/v1/payment/process`, {
+      const response = await fetch(PAYMENT_PROCESS, {
         method: "POST",
         credentials: "include",
         headers: {

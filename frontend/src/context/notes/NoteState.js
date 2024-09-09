@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import NoteContext from './noteContext';
+import { BACKEND_URL } from '../../AllUrls';
 
 
 const NoteState = (props) => {
-  const host = 'http://localhost:4000'
+  const host = BACKEND_URL
 
  // set message and error message and loading
  const [loading, setLoading] = useState(false)
