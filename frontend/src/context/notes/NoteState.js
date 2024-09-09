@@ -53,6 +53,7 @@ const NoteState = (props) => {
   // ***************************************************************************************************
   //  Get all products for Home page
   const getAllProducts = async (keyword = "", currentPage = 1, price = [0, 70000], category, ratings = 0) => {
+    setLoading(true)
     let link = `${host}/api/v1/products?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&ratings[gte]=${ratings}`;
     if (category) {
       link = `${host}/api/v1/products?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&category=${category}&ratings[gte]=${ratings}`;
@@ -67,6 +68,7 @@ const NoteState = (props) => {
     const data = await response.json()
     if (data.Error_message) {
       setError_message(data.Error_message)
+      setLoading(false)
     }
 
     
@@ -80,6 +82,8 @@ const NoteState = (props) => {
       setProductsCount(productsCount)
       setResultPerPage(resultPerPage)
       setfilteredProductsCount(allfilteredProductsCount)
+      setLoading(false)
+
     }
     // setLoading(false)
   }
