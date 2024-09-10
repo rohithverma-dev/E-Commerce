@@ -4,6 +4,7 @@ const jwt = require("jsonwebtoken")
 exports.isAuthenticatedUser =  async (req, res , next) => {
     
     const token = req.cookies.token; 
+
     if (!token) {
               
         res.json({
@@ -20,7 +21,8 @@ exports.isAuthenticatedUser =  async (req, res , next) => {
           if (err) {
             res.cookie("token", null, {             // if token in browser cookie
                 expires: new Date(Date.now()),
-                httpOnly: true
+                httpOnly: true,
+                secure:true    // In production (on Vercel), your app is likely running over HTTPS, so the secure flag must be set to true for cookies to be sent.
             })
             res.json({
                 success:false,
