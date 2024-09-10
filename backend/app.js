@@ -5,9 +5,9 @@ const dotenv = require("dotenv");
 // config   
 dotenv.config({path:"./config/config.env"})
 const corsConfig = {
+    credentials: true,
     origin: process.env.FRONTEND_URL,               // Your frontend URL on Vercel
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    credentials: true
 };
 app.use(cors(corsConfig));
 
