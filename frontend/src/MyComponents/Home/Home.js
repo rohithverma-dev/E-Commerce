@@ -38,6 +38,7 @@ function Home() {
         Featured Products
       </h2>
       <div className="container" id="container">
+        {products[0]?<></>:<Loading/>}
         {products &&
           products.map((product) => (
             <ProductCard key={product._id} product={product} />

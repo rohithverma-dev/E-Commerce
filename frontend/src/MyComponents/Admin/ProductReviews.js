@@ -22,7 +22,7 @@ const ProductReviews = () => {
 
   const deleteReviewHandler = (  reviewId) => {
     console.log("donneee" ,  reviewId , typeof reviewId );
-    Admin_deleteReview( Number(reviewId) , productId);
+    Admin_deleteReview( reviewId , productId);
   };
 
   const productReviewsSubmitHandler = (e) => {
