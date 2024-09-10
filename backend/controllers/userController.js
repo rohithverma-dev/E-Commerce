@@ -130,7 +130,8 @@ try {
     res.cookie("token", null, {              //when token in on browser
         expires: new Date(Date.now()),
         httpOnly: true,
-        secure: true   // In production (on Vercel), your app is likely running over HTTPS, so the secure flag must be set to true for cookies to be sent.
+        secure: true,   // In production (on Vercel), your app is likely running over HTTPS, so the secure flag must be set to true for cookies to be sent.
+        sameSite: 'None',  // as frontend and backend are on different different site.
     })
 
     res.status(200).json({
